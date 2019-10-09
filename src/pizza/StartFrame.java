@@ -56,7 +56,6 @@ public class StartFrame extends javax.swing.JFrame {
         jsEmailText = new javax.swing.JTextField();
         jsSignUpButton = new javax.swing.JButton();
         jsFeedbackLabel = new javax.swing.JLabel();
-        jWelcomeLabel = new javax.swing.JLabel();
         jLoginButton = new javax.swing.JButton();
         jSignUpButton = new javax.swing.JButton();
         jLogoLabel = new javax.swing.JLabel();
@@ -192,10 +191,6 @@ public class StartFrame extends javax.swing.JFrame {
         setForeground(new java.awt.Color(102, 255, 102));
         setResizable(false);
 
-        jWelcomeLabel.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
-        jWelcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jWelcomeLabel.setText("WELCOME TO THE TSOVINAYAN PIZZA SHIP ");
-
         jLoginButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLoginButton.setText("Login");
         jLoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -212,36 +207,33 @@ public class StartFrame extends javax.swing.JFrame {
             }
         });
 
-        jLogoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Anonymous\\Documents\\NetBeansProjects\\Pizza\\src\\pizza\\logo.png")); // NOI18N
+        jLogoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLogoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizza/ebonini.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLogoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLogoLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jWelcomeLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(jLoginButton)
-                        .addGap(187, 187, 187)
-                        .addComponent(jSignUpButton)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSignUpButton))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLogoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jWelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSignUpButton)
-                    .addComponent(jLoginButton))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(jLoginButton)
+                .addGap(44, 44, 44)
+                .addComponent(jSignUpButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -311,7 +303,6 @@ public class StartFrame extends javax.swing.JFrame {
     private javax.swing.JDialog jSignUpDialog;
     private javax.swing.JLabel jUsernameLabel;
     private javax.swing.JTextField jUsernameText;
-    private javax.swing.JLabel jWelcomeLabel;
     private javax.swing.JLabel jsEmailLabel;
     private javax.swing.JTextField jsEmailText;
     private javax.swing.JLabel jsFeedbackLabel;
