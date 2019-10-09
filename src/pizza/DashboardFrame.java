@@ -5,6 +5,8 @@
  */
 package pizza;
 
+import javax.swing.JLayeredPane;
+
 /**
  *
  * @author Anonymous
@@ -28,6 +30,13 @@ public class DashboardFrame extends javax.swing.JFrame {
         jParlorNameLabel.setText(parlor.getName());
         jParlorAddressLabel.setText(parlor.getAddress());
         jUsernameLabel.setText(currentCustomer.getUsername());
+        jLayeredPane.add(jCheesePic, 0);
+        jLayeredPane.add(jPepperoniPic, 0);
+        jLayeredPane.add(jMushroomPic, 0);
+        jPepperoniPic.setLocation(0, 12);
+        jMushroomPic.setLocation(0, 12);
+        jMushroomPic.setVisible(false);
+        jPepperoniPic.setVisible(false);
     }
 
     /**
@@ -50,12 +59,13 @@ public class DashboardFrame extends javax.swing.JFrame {
         jLargeRadio = new javax.swing.JRadioButton();
         jSizeLabel = new javax.swing.JLabel();
         jCheckOutButton = new javax.swing.JButton();
-        jCheeseBox = new javax.swing.JCheckBox();
-        jPepperoniBox = new javax.swing.JCheckBox();
-        jBaconBox = new javax.swing.JCheckBox();
-        jOnionBox = new javax.swing.JCheckBox();
-        jMushroomBox = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
+        jToppingsLabel = new javax.swing.JLabel();
+        jPepperoniBox = new java.awt.Checkbox();
+        jMushroomBox = new java.awt.Checkbox();
+        jLayeredPane = new javax.swing.JLayeredPane();
+        jCheesePic = new javax.swing.JLabel();
+        jMushroomPic = new javax.swing.JLabel();
+        jPepperoniPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,95 +97,137 @@ public class DashboardFrame extends javax.swing.JFrame {
             }
         });
 
-        jCheeseBox.setText("Cheese");
+        jToppingsLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jToppingsLabel.setText("Toppings");
 
-        jPepperoniBox.setText("Pepperoni");
+        jPepperoniBox.setLabel("Pepperoni");
+        jPepperoniBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPepperoniBoxMousePressed(evt);
+            }
+        });
 
-        jBaconBox.setText("Bacon");
+        jMushroomBox.setLabel("Mushrooms");
+        jMushroomBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMushroomBoxMousePressed(evt);
+            }
+        });
 
-        jOnionBox.setText("Onions");
+        jCheesePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizza/cheese.png"))); // NOI18N
 
-        jMushroomBox.setText("Mushrooms");
+        jMushroomPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizza/mushrooms.png"))); // NOI18N
+        jMushroomPic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMushroomPicMousePressed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Toppings");
+        jPepperoniPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizza/pepperoni.png"))); // NOI18N
+
+        jLayeredPane.setLayer(jCheesePic, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane.setLayer(jMushroomPic, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane.setLayer(jPepperoniPic, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPaneLayout = new javax.swing.GroupLayout(jLayeredPane);
+        jLayeredPane.setLayout(jLayeredPaneLayout);
+        jLayeredPaneLayout.setHorizontalGroup(
+            jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneLayout.createSequentialGroup()
+                .addComponent(jCheesePic)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jMushroomPic)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPepperoniPic)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jLayeredPaneLayout.setVerticalGroup(
+            jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneLayout.createSequentialGroup()
+                .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPepperoniPic)
+                    .addGroup(jLayeredPaneLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jMushroomPic)
+                            .addComponent(jCheesePic))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(jCheckOutButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLogoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jParlorAddressLabel)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jParlorAddressLabel)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jParlorNameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jUsernameLabel))))
+                                .addGap(12, 12, 12))))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSmallRadio)
+                            .addComponent(jMediumRadio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLargeRadio)
+                            .addComponent(jSizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSmallRadio)
-                                    .addComponent(jMediumRadio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLargeRadio)
-                                    .addComponent(jSizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(82, 82, 82)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPepperoniBox)
-                                    .addComponent(jBaconBox)
-                                    .addComponent(jOnionBox)
-                                    .addComponent(jMushroomBox)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jCheeseBox))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(182, 182, 182)
-                                .addComponent(jCheckOutButton)))
-                        .addGap(0, 198, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jToppingsLabel)
+                            .addComponent(jPepperoniBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jMushroomBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jUsernameLabel)
+                        .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLogoLabel)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jParlorNameLabel)
                             .addComponent(jUsernameLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jParlorAddressLabel)))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSizeLabel)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSmallRadio)
-                    .addComponent(jCheeseBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jMediumRadio)
-                    .addComponent(jPepperoniBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLargeRadio)
-                    .addComponent(jBaconBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jOnionBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jMushroomBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jParlorAddressLabel)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLogoLabel)
+                                        .addGap(23, 23, 23)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jSizeLabel)
+                                            .addComponent(jToppingsLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jSmallRadio))
+                                    .addComponent(jPepperoniBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, 0)
+                                .addComponent(jMediumRadio))
+                            .addComponent(jMushroomBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(jLargeRadio)
+                        .addGap(156, 156, 156)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jCheckOutButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -185,22 +237,54 @@ public class DashboardFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jCheckOutButtonActionPerformed
 
+    private void jPepperoniBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPepperoniBoxMousePressed
+        // TODO add your handling code here:
+        if (!jPepperoniBox.getState()) {
+            jPepperoniPic.setVisible(true);
+            if(jPepperoniPic.isVisible()){
+                System.out.println("should work");
+                System.out.println(jCheesePic.getLocation());
+                System.out.println(jPepperoniPic.getLocation());
+            }
+        } else {
+            jPepperoniPic.setVisible(false);
+        }
+    }//GEN-LAST:event_jPepperoniBoxMousePressed
+
+    private void jMushroomPicMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMushroomPicMousePressed
+
+    }//GEN-LAST:event_jMushroomPicMousePressed
+
+    private void jMushroomBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMushroomBoxMousePressed
+        // TODO add your handling code here:
+        if (!jMushroomBox.getState()) {
+            jMushroomPic.setVisible(true);
+            System.out.println("rip");
+            System.out.println(jMushroomPic.getLocation());
+
+        } else {
+            System.out.println("wtf");
+            jMushroomPic.setVisible(false);
+        }
+    }//GEN-LAST:event_jMushroomBoxMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jBaconBox;
     private javax.swing.JButton jCheckOutButton;
-    private javax.swing.JCheckBox jCheeseBox;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jCheesePic;
     private javax.swing.JRadioButton jLargeRadio;
+    private javax.swing.JLayeredPane jLayeredPane;
     private javax.swing.JLabel jLogoLabel;
     private javax.swing.JRadioButton jMediumRadio;
-    private javax.swing.JCheckBox jMushroomBox;
-    private javax.swing.JCheckBox jOnionBox;
+    private java.awt.Checkbox jMushroomBox;
+    private javax.swing.JLabel jMushroomPic;
     private javax.swing.JLabel jParlorAddressLabel;
     private javax.swing.JLabel jParlorNameLabel;
-    private javax.swing.JCheckBox jPepperoniBox;
+    private java.awt.Checkbox jPepperoniBox;
+    private javax.swing.JLabel jPepperoniPic;
     private javax.swing.JLabel jSizeLabel;
     private javax.swing.JRadioButton jSmallRadio;
+    private javax.swing.JLabel jToppingsLabel;
     private javax.swing.JLabel jUsernameLabel;
     private javax.swing.ButtonGroup sizeGroup;
     private javax.swing.ButtonGroup toppingsGroup;
